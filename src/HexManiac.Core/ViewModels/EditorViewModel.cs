@@ -406,7 +406,7 @@ namespace HavenSoft.HexManiac.Core.ViewModels {
       public bool Base10Length { get => base10Length; set => Set(ref base10Length, value); }
 
       private StubCommand launchScriptsLocation;
-      public ICommand LaunchScriptsLocation => StubCommand(ref launchScriptsLocation, () => fileSystem.LaunchProcess("resources/scripts"));
+      public ICommand LaunchScriptsLocation => StubCommand(ref launchScriptsLocation, () => fileSystem.LaunchProcess(ResourcePath.Get("resources/scripts")));
 
       public Theme Theme { get; }
 

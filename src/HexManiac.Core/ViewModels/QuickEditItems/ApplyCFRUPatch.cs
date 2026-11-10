@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HavenSoft.HexManiac.Core.ViewModels.QuickEditItems {
    public class ApplyCFRUPatch : IQuickEditItem {
-      private const string PatchFileName = "resources/hubol_dpe_cfru.ups";
+      private static readonly string PatchFileName = ResourcePath.Get("resources/hubol_dpe_cfru.ups");
 
       public EditorViewModel Editor { get; init; }
 

@@ -13,7 +13,7 @@ namespace HavenSoft.HexManiac.Core.ViewModels.QuickEditItems {
 
       public string Name => "Make Moves Expandable";
 
-      private const string ExpandLevelUpMovesCode = "resources/expand_levelup_moves_code.hma";
+      private static readonly string ExpandLevelUpMovesCode = ResourcePath.Get("resources/expand_levelup_moves_code.hma");
 
       public string Description => "Running this utility will remove the move limiters " +
                                    "and allow for unlimited moves and effects.";
