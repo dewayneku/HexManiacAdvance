@@ -6,8 +6,8 @@
     <ImplicitUsings>false</ImplicitUsings>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Nullable>annotations</Nullable>
-    <CodeGenDir>$(SolutionDir)artifacts\$(AssemblyName)\codegen\</CodeGenDir>
-    <AutoImplement>$(SolutionDir)artifacts\AutoImplement.Tool\bin\$(Configuration)\$(TargetFramework)\AutoImplement.Tool</AutoImplement>
+    <CodeGenDir>$(HmaRepoRoot)artifacts\$(AssemblyName)\codegen\</CodeGenDir>
+    <AutoImplement>$(HmaRepoRoot)artifacts\AutoImplement.Tool\bin\$(Configuration)\$(TargetFramework)\AutoImplement.Tool</AutoImplement>
     <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
@@ -23,11 +23,11 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Xunit.SkippableFact" Version="1.4.13" />
-    <ProjectReference Include="$(SolutionDir)src\HexManiac.Core\HexManiac.Core.csproj" />
+    <ProjectReference Include="$(HmaRepoRoot)src\HexManiac.Core\HexManiac.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="$(SolutionDir)src\SharedAssemblyInfo.cs" />
+    <Compile Include="$(HmaRepoRoot)src\SharedAssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,11 +67,11 @@
       del "$(TargetDir)Models\Code\*.hma"
       copy "$(TargetDir)Models\Code\*.py" "$(TargetDir)resources"
       del "$(TargetDir)Models\Code\*.py"
-      copy "$(SolutionDir)src\HexManiac.WPF\Scripts\*.hma" "$(TargetDir)resources\Scripts"
-      copy "$(SolutionDir)src\HexManiac.WPF\Scripts\Add Mechanics From Later Generations\*.hma" "$(TargetDir)resources\Scripts\Add Mechanics From Later Generations"
-      copy "$(SolutionDir)src\HexManiac.WPF\Scripts\internal\*.hma" "$(TargetDir)resources\Scripts\internal"
-      copy "$(SolutionDir)src\HexManiac.WPF\Scripts\Patches\*.hma" "$(TargetDir)resources\Scripts\Patches"
-      copy "$(SolutionDir)src\HexManiac.WPF\Scripts\Update Existing Mechanics\*.hma" "$(TargetDir)resources\Scripts\Update Existing Mechanics"
+      copy "$(HmaRepoRoot)src\HexManiac.WPF\Scripts\*.hma" "$(TargetDir)resources\Scripts"
+      copy "$(HmaRepoRoot)src\HexManiac.WPF\Scripts\Add Mechanics From Later Generations\*.hma" "$(TargetDir)resources\Scripts\Add Mechanics From Later Generations"
+      copy "$(HmaRepoRoot)src\HexManiac.WPF\Scripts\internal\*.hma" "$(TargetDir)resources\Scripts\internal"
+      copy "$(HmaRepoRoot)src\HexManiac.WPF\Scripts\Patches\*.hma" "$(TargetDir)resources\Scripts\Patches"
+      copy "$(HmaRepoRoot)src\HexManiac.WPF\Scripts\Update Existing Mechanics\*.hma" "$(TargetDir)resources\Scripts\Update Existing Mechanics"
     </PostBuildEvent>
   </PropertyGroup>
 

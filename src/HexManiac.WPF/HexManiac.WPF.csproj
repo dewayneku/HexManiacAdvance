@@ -31,7 +31,7 @@
     <None Remove="Resources\Splash.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(SolutionDir)src\SharedAssemblyInfo.cs" />
+    <Compile Include="$(HmaRepoRoot)src\SharedAssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MoveRelearnerTesting.hma">
@@ -67,7 +67,7 @@
     <PackageReference Include="IronPython" Version="3.4.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(SolutionDir)src\HexManiac.Core\HexManiac.Core.csproj" />
+    <ProjectReference Include="$(HmaRepoRoot)src\HexManiac.Core\HexManiac.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\AppIcon.ico" />
@@ -89,9 +89,9 @@
       copy "$(TargetDir)Models\Code\*.py" "$(TargetDir)resources"
       del "$(TargetDir)Models\Code\*.py"
       xcopy "$(TargetDir)Scripts" "$(TargetDir)resources/Scripts" /i /c /k /e /r /y
-      copy "$(SolutionDir)src\HexManiac.WPF\Resources\Yogia16.graphics.titlescreen.copyright.tilemap.png" "$(TargetDir)resources"
-      copy "$(SolutionDir)src\HexManiac.WPF\Resources\Yogia16-dark.graphics.titlescreen.copyright.tilemap.png" "$(TargetDir)resources"
-      copy "$(SolutionDir)src\HexManiac.Core\ViewModels\QuickEditItems\hubol_dpe_cfru.ups" "$(TargetDir)resources"
+      copy "$(HmaRepoRoot)src\HexManiac.WPF\Resources\Yogia16.graphics.titlescreen.copyright.tilemap.png" "$(TargetDir)resources"
+      copy "$(HmaRepoRoot)src\HexManiac.WPF\Resources\Yogia16-dark.graphics.titlescreen.copyright.tilemap.png" "$(TargetDir)resources"
+      copy "$(HmaRepoRoot)src\HexManiac.Core\ViewModels\QuickEditItems\hubol_dpe_cfru.ups" "$(TargetDir)resources"
       del /f /s /q "$(TargetDir)Scripts" 1&gt;nul
       rmdir /s /q "$(TargetDir)Scripts"
       rmdir "$(TargetDir)Models\Code"

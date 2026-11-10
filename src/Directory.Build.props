@@ -1,9 +1,12 @@
 <Project>
   <PropertyGroup>
-    <OutputPath>$(SolutionDir)artifacts\$(MSBuildProjectName)\bin\$(Configuration)\</OutputPath>
-    <BaseOutputPath>$(SolutionDir)artifacts\$(MSBuildProjectName)\bin\$(Configuration)\</BaseOutputPath>
-    <BaseIntermediateOutputPath>$(SolutionDir)artifacts\$(MSBuildProjectName)\obj\$(Configuration)\</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(SolutionDir)artifacts\$(MSBuildProjectName)\obj\$(Configuration)\</IntermediateOutputPath>
+    <!-- Repo root, from this file's location. $(SolutionDir) is wrong or empty when a project is built
+         on its own or referenced from another solution, so paths must not depend on it. -->
+    <HmaRepoRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildThisFileDirectory)..'))</HmaRepoRoot>
+    <OutputPath>$(HmaRepoRoot)artifacts\$(MSBuildProjectName)\bin\$(Configuration)\</OutputPath>
+    <BaseOutputPath>$(HmaRepoRoot)artifacts\$(MSBuildProjectName)\bin\$(Configuration)\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(HmaRepoRoot)artifacts\$(MSBuildProjectName)\obj\$(Configuration)\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(HmaRepoRoot)artifacts\$(MSBuildProjectName)\obj\$(Configuration)\</IntermediateOutputPath>
     <NoWarn>1591;1701;1702;8034;0067;1573;0108;0659</NoWarn>
   </PropertyGroup>
 </Project>

@@ -6,8 +6,8 @@
     <ImplicitUsings>false</ImplicitUsings>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Nullable>annotations</Nullable>
-    <CodeGenDir>$(SolutionDir)artifacts\$(AssemblyName)\codegen\</CodeGenDir>
-    <AutoImplement>$(SolutionDir)artifacts\AutoImplement.Tool\bin\$(Configuration)\$(TargetFramework)\AutoImplement.Tool</AutoImplement>
+    <CodeGenDir>$(HmaRepoRoot)artifacts\$(AssemblyName)\codegen\</CodeGenDir>
+    <AutoImplement>$(HmaRepoRoot)artifacts\AutoImplement.Tool\bin\$(Configuration)\$(TargetFramework)\AutoImplement.Tool</AutoImplement>
     <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
@@ -23,12 +23,12 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Xunit.SkippableFact" Version="1.4.13" />
-    <ProjectReference Include="$(SolutionDir)src\HexManiac.Core\HexManiac.Core.csproj" />
+    <ProjectReference Include="$(HmaRepoRoot)src\HexManiac.Core\HexManiac.Core.csproj" />
     <ProjectReference Include="..\HexManiac.Tests\HexManiac.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="$(SolutionDir)src\SharedAssemblyInfo.cs" />
+    <Compile Include="$(HmaRepoRoot)src\SharedAssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,7 +47,7 @@
       del "$(TargetDir)Models\Code\*.hma"
       copy "$(TargetDir)Models\Code\*.py" "$(TargetDir)resources"
       del "$(TargetDir)Models\Code\*.py"
-      xcopy "$(SolutionDir)src\HexManiac.WPF\Scripts" "$(TargetDir)resources/Scripts" /i /c /k /e /r /y
+      xcopy "$(HmaRepoRoot)src\HexManiac.WPF\Scripts" "$(TargetDir)resources/Scripts" /i /c /k /e /r /y
     </PostBuildEvent>
   </PropertyGroup>
 
