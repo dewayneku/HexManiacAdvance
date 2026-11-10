@@ -62,7 +62,7 @@ namespace HavenSoft.HexManiac.Core.Models {
    }
 
    public static class PCSString {
-      private const string TextReferenceFileName = "resources/pcsReference.txt";
+      private static readonly string TextReferenceFileName = ResourcePath.Get("resources/pcsReference.txt");
 
       public static readonly IReadOnlyList<string> PCS;
       public static readonly IReadOnlySet<string> ValidInProgressEscapes;

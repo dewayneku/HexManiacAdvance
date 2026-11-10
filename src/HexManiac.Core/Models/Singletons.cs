@@ -19,18 +19,18 @@ namespace HavenSoft.HexManiac.Core.Models {
    /// Shared resources that involve an expensive setup, (so we only want to do it once) but then cannot be edited after being initialized.
    /// </summary>
    public class Singletons {
-      private const string TableReferenceFileName = "resources/tableReference.txt";
-      private const string TableReferenceFileNameItalian = "resources/tableReference.it.txt";
-      private const string ConstantReferenceFileName = "resources/constantReference.txt";
-      private const string ConstantReferenceFileNameItalian = "resources/constantReference.it.txt";
-      private const string ThumbReferenceFileName = "resources/armReference.txt";
-      private const string ScriptReferenceFileName = "resources/scriptReference.txt";
-      private const string BattleScriptReferenceFileName = "resources/battleScriptReference.txt";
-      private const string AnimationScriptReferenceFileName = "resources/animationScriptReference.txt";
-      private const string BattleAIScriptReferenceFileName = "resources/battleAIScriptReference.txt";
-      private const string ScriptReferenceDocumetationFileName = "resources/scriptReference.md";
-      private const string DocReferenceFileName = "resources/docReference.txt";
-      private const string PythonUtilityFileName = "resources/hma.py";
+      private static readonly string TableReferenceFileName = ResourcePath.Get("resources/tableReference.txt");
+      private static readonly string TableReferenceFileNameItalian = ResourcePath.Get("resources/tableReference.it.txt");
+      private static readonly string ConstantReferenceFileName = ResourcePath.Get("resources/constantReference.txt");
+      private static readonly string ConstantReferenceFileNameItalian = ResourcePath.Get("resources/constantReference.it.txt");
+      private static readonly string ThumbReferenceFileName = ResourcePath.Get("resources/armReference.txt");
+      private static readonly string ScriptReferenceFileName = ResourcePath.Get("resources/scriptReference.txt");
+      private static readonly string BattleScriptReferenceFileName = ResourcePath.Get("resources/battleScriptReference.txt");
+      private static readonly string AnimationScriptReferenceFileName = ResourcePath.Get("resources/animationScriptReference.txt");
+      private static readonly string BattleAIScriptReferenceFileName = ResourcePath.Get("resources/battleAIScriptReference.txt");
+      private static readonly string ScriptReferenceDocumetationFileName = ResourcePath.Get("resources/scriptReference.md");
+      private static readonly string DocReferenceFileName = ResourcePath.Get("resources/docReference.txt");
+      private static readonly string PythonUtilityFileName = ResourcePath.Get("resources/hma.py");
 
       public IMetadataInfo MetadataInfo { get; }
       public IReadOnlyDictionary<string, GameReferenceTables> GameReferenceTables { get; }

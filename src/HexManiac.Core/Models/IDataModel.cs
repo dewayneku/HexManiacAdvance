@@ -202,13 +202,13 @@ namespace HavenSoft.HexManiac.Core.Models {
       public int Count => RawData.Length;
 
       public static IEnumerable<StoredMetadata> GetDefaultMetadatas(params string[] codes) {
-         if (File.Exists("resources/default.toml")) {
-            var lines = File.ReadAllLines("resources/default.toml");
+         if (File.Exists(ResourcePath.Get("resources/default.toml"))) {
+            var lines = File.ReadAllLines(ResourcePath.Get("resources/default.toml"));
             var metadata = new StoredMetadata(lines);
             yield return metadata;
          }
 
-         var files = Directory.GetFiles("resources", "default.*.toml");
+         var files = Directory.GetFiles(ResourcePath.Get("resources"), "default.*.toml");
          foreach (var fileName in files) {
             foreach (var code in codes) {
                if (!fileName.ToLower().Contains($".{code.ToLower()}.")) continue;
