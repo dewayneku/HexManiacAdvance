@@ -64,6 +64,26 @@ namespace HavenSoft.HexManiac.Tests {
       }
 
       [Fact]
+      public void ScriptThatMustMove_ExpandThenUndoOnce_FullyRestored() {
+         WriteEventScript(0x10, "end");   // 1 byte at 0x10
+         WriteEventScript(0x11, "end");   // blocks growing in place
+         WriteEventScript(0x40, "goto <000010>"); // a pointer to the script at 0x10
+         Model.ObserveRunWritten(Token, new PointerRun(0x41));
+         ViewPort.ChangeHistory.TagAsSaved();
+         var original = Model.RawData.Take(0x200).ToArray();
+
+         ViewPort.Goto.Execute(0x10);
+         EventScript = "nop;nop;nop;end"; // 4 bytes: must be repointed to free space
+         Assert.NotEqual(0x10, Model.ReadPointer(0x41)); // it moved, and the pointer followed
+
+         ViewPort.Undo.Execute(); // one edit, one undo
+
+         Assert.Equal(0x10, Model.ReadPointer(0x41));
+         Assert.Equal(original, Model.RawData.Take(0x200).ToArray());
+         Assert.True(ViewPort.ChangeHistory.IsSaved);
+      }
+
+      [Fact]
       public void ScriptWithCallAndLabel_Expand_NoError() {
          Tool.Mode = CodeMode.Script;
          EventScript = "call <routine>;end;routine:;end";
