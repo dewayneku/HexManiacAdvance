@@ -148,6 +148,25 @@ namespace HavenSoft.HexManiac.Tests {
       }
 
       [Fact]
+      public void LfLineEndings_InsertMissingClosers_AddsNoBlankLines() {
+         var lf = "loadpointer 0 <40>\n{\ntest\n}\nend";
+         var script = lf;
+
+         ScriptParser.InsertMissingClosers(ref script, 0);
+
+         Assert.Equal(lf, script);
+      }
+
+      [Fact]
+      public void LfLineEndings_CompileText_TextHasNoLeadingNewline() {
+         Tool.Mode = CodeMode.Script;
+         Tool.Contents[0].Content = "loadpointer 0 <40>\n{\ntest\n}\nend";
+
+         var run = (PCSRun)Model.GetNextRun(Model.ReadPointer(2));
+         Assert.Equal("test", run.SerializeRun());
+      }
+
+      [Fact]
       public void OutOfOrderJumps_EditBottomScript_ScriptCountRemainsSame() {
          Tool.Mode = CodeMode.Script;
          AddScriptFormat(0);

@@ -461,13 +461,13 @@ namespace HavenSoft.HexManiac.Core.Models.Code {
                   text.RemoveAt(close + 1);
                }
             }
-            if (i + 1 < text.Count && text[i + 1] != '\r') {
+            if (i + 1 < text.Count && text[i + 1] != '\r' && text[i + 1] != '\n') {
                text.Insert(i + 1, '\r');
                text.Insert(i + 2, '\n');
                if (i < caret) { caret += 2; caretMove += 2; }
                close += 2;
             }
-            if (close + 1 < text.Count && text[close + 1] != '\r') {
+            if (close + 1 < text.Count && text[close + 1] != '\r' && text[close + 1] != '\n') {
                text.Insert(close + 1, '\r');
                text.Insert(close + 2, '\n');
                if (close < caret) { caret += 2; }
