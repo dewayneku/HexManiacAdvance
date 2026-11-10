@@ -3,6 +3,7 @@ using HavenSoft.HexManiac.Core.ViewModels.DataFormats;
 using HavenSoft.HexManiac.Core.ViewModels.Images;
 using System.Collections.Generic;
 using System.Text;
+using Ascii = HavenSoft.HexManiac.Core.ViewModels.DataFormats.Ascii; // System.Text.Ascii exists in .NET 8+
 
 namespace HavenSoft.HexManiac.Core.Models.Runs {
    // TODO handle \n, \r, \t, and other unprintable characters

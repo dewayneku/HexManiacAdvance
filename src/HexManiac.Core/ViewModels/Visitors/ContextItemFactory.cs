@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Ascii = HavenSoft.HexManiac.Core.ViewModels.DataFormats.Ascii; // System.Text.Ascii exists in .NET 8+
 using System.Windows.Input;
 using static HavenSoft.HexManiac.Core.ICommandExtensions;
 

@@ -8,6 +8,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using Ascii = HavenSoft.HexManiac.Core.ViewModels.DataFormats.Ascii; // System.Text.Ascii exists in .NET 8+
 using HexManiac.Core.Models.Runs.Sprites;
 
 namespace HavenSoft.HexManiac.Core.ViewModels.Visitors {
