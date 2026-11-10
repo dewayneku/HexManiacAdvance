@@ -274,10 +274,14 @@ namespace HavenSoft.HexManiac.Core.Models {
          var valueAddress = table.Start + table.ElementLength * arrayIndex + elementOffset;
          var seg = table.ElementContent.Single(segment => segment.Name == fieldName);
          if (seg is ArrayRunEnumSegment enumSeg) {
-            if (enumSeg.TryParse(model, valueText, out int value)) {
-               model.WriteMultiByteValue(valueAddress, seg.Length, tokenFactory(), value);
-               table.NotifyChildren(Model, tokenFactory(), arrayIndex, table.ElementContent.IndexOf(seg));
+            if (!enumSeg.TryParse(model, valueText, out int value)) {
+               // don't fail silently: a typo in a script would otherwise skip the edit with no message
+               var suggestions = enumSeg.GetBestOptions(model, valueText).Take(5).ToList();
+               var hint = suggestions.Count > 0 ? $" Did you mean: {string.Join(", ", suggestions)}?" : string.Empty;
+               throw new ArgumentException($"'{valueText}' is not a valid {enumSeg.EnumName} value for '{fieldName}'.{hint}", nameof(valueText));
             }
+            model.WriteMultiByteValue(valueAddress, seg.Length, tokenFactory(), value);
+            table.NotifyChildren(Model, tokenFactory(), arrayIndex, table.ElementContent.IndexOf(seg));
          } else {
             throw new NotImplementedException();
          }

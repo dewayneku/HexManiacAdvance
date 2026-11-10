@@ -1362,6 +1362,30 @@ namespace HavenSoft.HexManiac.Tests {
       }
 
       [Fact]
+      public void EnumField_SetValidName_WritesValue() {
+         CreateTextTable("fruit", 0x100, "Apple", "Banana", "Coconut");
+         ViewPort.Edit("^table[kind.fruit]2 ");
+
+         Model.GetTableModel("table", () => ViewPort.ChangeHistory.CurrentChange)[1]["kind"] = "Coconut";
+
+         Assert.Equal(2, Model[Model.GetTable("table").Start + 1]);
+      }
+
+      [Fact]
+      public void EnumField_SetInvalidName_ThrowsAndLeavesDataUnchanged() {
+         CreateTextTable("fruit", 0x100, "Apple", "Banana", "Coconut");
+         ViewPort.Edit("^table[kind.fruit]2 ");
+         var address = Model.GetTable("table").Start + 1;
+         var before = Model[address];
+         var element = Model.GetTableModel("table", () => ViewPort.ChangeHistory.CurrentChange)[1];
+
+         var ex = Assert.Throws<ArgumentException>(() => element.SetEnumValue("kind", "Durian"));
+
+         Assert.Contains("Durian", ex.Message);
+         Assert.Equal(before, Model[address]);
+      }
+
+      [Fact]
       public void TableWithLengthFromParent_AddNameViaAnchorText_DoesNotChangeLength() {
          ViewPort.Edit("<100> 03 @000 ^parent[child<[content:]/length> length::]1 ");
 
